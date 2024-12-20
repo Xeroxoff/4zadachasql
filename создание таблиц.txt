@@ -1,0 +1,15 @@
+-- таблица товаров на складе
+CREATE TABLE products (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    quantity INTEGER NOT NULL DEFAULT 0
+);
+
+-- таблица журнала операций
+CREATE TABLE operations_log (
+    id SERIAL PRIMARY KEY,
+    product_id INTEGER REFERENCES products(id) ON DELETE CASCADE,
+    operation VARCHAR(10) CHECK (operation IN ('ADD', 'REMOVE')),
+    quantity INTEGER NOT NULL,
+    operation_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

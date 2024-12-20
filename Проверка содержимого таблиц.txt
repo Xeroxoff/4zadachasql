@@ -1,0 +1,5 @@
+-- список всех товаров на складе
+SELECT * FROM products;
+
+-- журнал операций с товарами
+SELECT * FROM operations_log;
